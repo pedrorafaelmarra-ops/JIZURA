@@ -1,0 +1,39 @@
+name: Build JIZURA Medical
+
+on:
+  push:
+    branches: [med-project-video]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build JIZURA
+        run: python3 build.py
+      - name: Verify medical build
+        run: |
+          grep -q "Medical · Ion channel" index.html
+          grep -q "demo=medical" index.html
+          grep -q "QUEST CONCLUÍDA" index.html
+          echo "Medical pack and directed demo are present in index.html"
+      - name: Upload built site
+        uses: actions/upload-artifact@v4
+        with:
+          name: jizura-medical-build
+          path: |
+            index.html
+            en/index.html
+            zh-hant/index.html
+            zh-hans/index.html
+            ko/index.html
+            id/index.html
+            vi/index.html
+            sitemap.xml
