@@ -1,4 +1,4 @@
-name: Build JIZURA Medical\n# trigger retry 2026-10-03
+name: Build and Preview JIZURA Medical
 
 on:
   push:
@@ -9,22 +9,96 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  build-preview:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
       - name: Build JIZURA
         run: python3 build.py
+
       - name: Verify medical build
         run: |
           grep -q "Medical · Ion channel" index.html
           grep -q "demo=medical" index.html
           grep -q "QUEST CONCLUÍDA" index.html
           echo "Medical pack and directed demo are present in index.html"
+
+      - name: Install Playwright
+        run: |
+          npm init -y
+          npm install playwright
+          npx playwright install --with-deps chromium
+
+      - name: Create visual smoke test
+        run: |
+          cat > preview-medical.cjs <<'EOF'
+          const { chromium } = require('playwright');
+          const fs = require('fs');
+          (async () => {
+            fs.mkdirSync('preview-medical', { recursive: true });
+            const browser = await chromium.launch({ headless: true });
+            const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+            const errors = [];
+            page.on('console', m => {
+              const s = '[console.' + m.type() + '] ' + m.text();
+              console.log(s);
+              fs.appendFileSync('preview-medical/browser.log', s + '\n');
+            });
+            page.on('pageerror', e => {
+              errors.push(String(e));
+              fs.appendFileSync('preview-medical/browser.log', '[pageerror] ' + e + '\n');
+            });
+            await page.goto('http://127.0.0.1:8765/?demo=medical', { waitUntil: 'networkidle' });
+            await page.screenshot({ path: 'preview-medical/00-loaded.png', fullPage: true });
+
+            const canvas = page.locator('canvas').first();
+            if (await canvas.count() === 0) throw new Error('JIZURA canvas not found');
+            const box = await canvas.boundingBox();
+            if (!box || box.width < 100 || box.height < 100) throw new Error('JIZURA canvas is not visibly sized');
+
+            // Start preview using the app's visible play control when available.
+            const play = page.locator('#btnPlay, button').filter({ hasText: /play|再生|▶/i }).first();
+            if (await play.count()) await play.click();
+            else await page.keyboard.press('Space');
+
+            const marks = [4, 10, 16, 22, 28];
+            let elapsed = 0;
+            for (const sec of marks) {
+              await page.waitForTimeout((sec - elapsed) * 1000);
+              elapsed = sec;
+              await canvas.screenshot({ path: 'preview-medical/' + String(sec).padStart(2,'0') + 's.png' });
+            }
+            if (errors.length) throw new Error('Browser page errors: ' + errors.join(' | '));
+            fs.writeFileSync('preview-medical/PASS.txt', 'JIZURA Medical visual smoke test completed. Canvas rendered through 28 seconds.\n');
+            await browser.close();
+          })().catch(e => { console.error(e); process.exit(1); });
+          EOF
+
+      - name: Serve and run 30s medical preview
+        run: |
+          python3 -m http.server 8765 > preview-server.log 2>&1 &
+          SERVER_PID=$!
+          trap "kill $SERVER_PID || true" EXIT
+          sleep 2
+          node preview-medical.cjs
+
+      - name: Upload visual preview
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jizura-medical-preview
+          path: |
+            preview-medical/
+            preview-server.log
+          if-no-files-found: warn
+
       - name: Upload built site
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: jizura-medical-build
