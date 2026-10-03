@@ -58,7 +58,7 @@ jobs:
 
             const lyricsValue = await page.locator('#lyrics').inputValue();
             if (lyricsValue.includes('\\\\n[')) throw new Error('Literal \\\\n found in LRC input');
-            const lrcLines = lyricsValue.split(/\r?\n/).filter(x => /^\\[\\d{2}:\\d{2}\\.\\d{2}\\]/.test(x));
+            const lrcLines = lyricsValue.split(/\r?\n/).filter(x => /^\[\d{2}:\d{2}\.\d{2}\]/.test(x));
             if (lrcLines.length < 15) throw new Error('Expected 15 LRC lines, found ' + lrcLines.length);
 
             const canvas = page.locator('canvas').first();
