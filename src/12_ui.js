@@ -1921,6 +1921,26 @@ async function restoreFonts() {
 /* ---------------- boot ---------------- */
 function boot() {
   S.project = loadLocal();
+  // Medical demo: ?demo=medical loads the directed physiology sequence without replacing saved projects.
+  // The preset is kept here as a small runtime project so GitHub Pages can preview it without a file picker.
+  try {
+    if (new URLSearchParams(location.search).get('demo') === 'medical') {
+      const p = J.defaultProject();
+      Object.assign(p, {
+        title: 'QUEST: CONTRAÇÃO MUSCULAR',
+        artist: 'Medicina Gamificada · JIZURA Medical',
+        lyrics: '[00:00.00]ENTRE NO CORPO HUMANO\\n[00:02.00]MÚSCULO ESTRIADO ESQUELÉTICO\\n[00:04.00]FASCÍCULO → FIBRA MUSCULAR\\n[00:06.00]*POTENCIAL DE AÇÃO*\\n[00:08.00]CANAIS DE Na⁺ SE ABREM\\n[00:10.00]DESPOLARIZAÇÃO DO SARCOLEMA\\n[00:12.00]SINAL → TÚBULOS T\\n[00:14.00]*LIBERAÇÃO DE Ca²⁺*\\n[00:16.00]Ca²⁺ → TROPONINA\\n[00:18.00]TROPOMIOSINA SE DESLOCA\\n[00:20.00]ACTINA + MIOSINA\\n[00:22.00]*ENCURTAMENTO DO SARCÔMERO*\\n[00:24.00]CONTRAÇÃO MUSCULAR\\n[00:26.00]*QUEST CONCLUÍDA*\\n[00:28.00]+500 XP · FISIOLOGIA NÍVEL 2',
+        style: 'hud', mood: 'graphic', extra: true, wa: false, horror: false, typo: true, kinetic: true,
+        unify: true, typeset: true, seed: 2026100301, aspect: '16:9', res: 1080, fps: 30
+      });
+      p.fx = Object.assign(p.fx, { motion:.92, glitch:.14, chroma:.18, decor:1, density:.88, texture:.25, flash:true, koma:0, onTwos:false, hud:'on', bgSwitch:.62, hideNo:true, hideTime:true });
+      p.timing = Object.assign(p.timing, { bpm:120, offset:0, snap:false, tail:.8 });
+      const D = ['crosshair','crosshair','cropMarks','medActionPotential','medIonChannel','medActionPotential','medIonChannel','medCalcium','medCalcium','medCalcium','medSarcomere','medSarcomere','medSarcomere','medQuest','medQuest'];
+      p.overrides = Object.fromEntries(D.map((d,i)=>[i,{decor:[d]}]));
+      p.colors = { enabled:true, accentOn:true, bg:'#06121D', fg:'#EAF7FF', sub:'#6D91A8', accent:'#00E5FF', accent2:'#FF496C', ink:'#0B2434' };
+      S.project = mergeProject(p);
+    }
+  } catch (e) {}
   bind(); initVolume(); syncUI(); syncLoopBtn(); replan();
   restoreFonts();
   // first visit on a phone: スマホ mode
