@@ -1935,10 +1935,10 @@ function boot() {
 [00:06.00]*POTENCIAL DE AÇÃO*
 [00:08.00]CANAIS DE Na⁺ SE ABREM
 [00:10.00]DESPOLARIZAÇÃO DO SARCOLEMA
-[00:12.00]SINAL → TÚBULOS T
-[00:14.00]*LIBERAÇÃO DE Ca²⁺*
+[00:12.00]TÚBULO T → DHPR / Cav1.1
+[00:14.00]RyR1 → LIBERAÇÃO DE Ca²⁺
 [00:16.00]Ca²⁺ → TROPONINA C
-[00:18.00]TROPOMIOSINA SE DESLOCA
+[00:18.00]TROPOMIOSINA → SÍTIOS DA ACTINA
 [00:20.00]ACTINA + MIOSINA
 [00:22.00]*ENCURTAMENTO DO SARCÔMERO*
 [00:24.00]CONTRAÇÃO MUSCULAR
@@ -1949,7 +1949,7 @@ function boot() {
       });
       p.fx = Object.assign(p.fx, { motion:.92, glitch:.14, chroma:.18, decor:1, density:.88, texture:.25, flash:true, koma:0, onTwos:false, hud:'on', bgSwitch:.62, hideNo:true, hideTime:true });
       p.timing = Object.assign(p.timing, { bpm:120, offset:0, snap:false, tail:.8 });
-      const D = ['crosshair','crosshair','cropMarks','medActionPotential','medIonChannel','medActionPotential','medIonChannel','medCalcium','medCalcium','medCalcium','medSarcomere','medSarcomere','medSarcomere','medQuest','medQuest'];
+      const D = ['crosshair','crosshair','cropMarks','medActionPotential','medIonChannel','medActionPotential','medTriad','medTriad','medTroponin','medTroponin','medSarcomere','medSarcomere','medSarcomere','medQuest','medQuest'];
       p.overrides = Object.fromEntries(D.map((d,i)=>[i,{decor:[d]}]));
       p.colors = { enabled:true, accentOn:true, bg:'#06121D', fg:'#EAF7FF', sub:'#6D91A8', accent:'#00E5FF', accent2:'#FF496C', ink:'#0B2434' };
       S.project = mergeProject(p);
