@@ -61,6 +61,46 @@ defs.medCalcium={
   }
 };
 
+defs.medTriad={
+  name:'Medical · T-tubule triad DHPR RyR1', tags:['graphic','editorial'], w:12, layer:'front',
+  draw(e,bb,P){
+    if(!main(e)||e.lt<0)return; const c=e.ctx,u=U(e),a=fade(e),W=e.W,H=e.H,t=e.lt;
+    const cx=W*.5, top=H*.58, srY=H*.82;
+    c.save(); c.globalAlpha=a;
+    // T-tubule descending from sarcolemma
+    c.strokeStyle=e.sc.accent;c.lineWidth=10*u;c.beginPath();c.moveTo(W*.16,top);c.lineTo(W*.84,top);c.stroke();
+    c.lineWidth=18*u;c.beginPath();c.moveTo(cx,top);c.lineTo(cx,H*.73);c.stroke();
+    c.fillStyle=e.sc.fg;c.font=`700 ${22*u}px sans-serif`;c.textAlign='center';c.fillText('TÚBULO T',cx,top-28*u);
+    // DHPR / Cav1.1 voltage sensor
+    c.fillStyle=e.sc.ink;c.strokeStyle=e.sc.accent2;c.lineWidth=4*u;c.beginPath();c.roundRect(cx-125*u,H*.65,250*u,62*u,12*u);c.fill();c.stroke();
+    c.fillStyle=e.sc.fg;c.font=`700 ${20*u}px sans-serif`;c.fillText('DHPR / Cav1.1',cx,H*.65+39*u);
+    // RyR1 on SR
+    c.strokeStyle=e.sc.sub;c.lineWidth=5*u;c.strokeRect(W*.17,srY,W*.66,H*.11);
+    c.fillStyle=e.sc.ink;c.strokeStyle=e.sc.accent;c.beginPath();c.roundRect(cx-105*u,srY-22*u,210*u,58*u,10*u);c.fill();c.stroke();
+    c.fillStyle=e.sc.fg;c.fillText('RyR1',cx,srY+14*u);
+    c.fillStyle=e.sc.sub;c.font=`700 ${18*u}px monospace`;c.fillText('RETÍCULO SARCOPLASMÁTICO',cx,srY+82*u);
+    // mechanical coupling and Ca release
+    c.strokeStyle=e.sc.accent2;c.lineWidth=5*u;c.setLineDash([12*u,9*u]);c.beginPath();c.moveTo(cx,H*.71);c.lineTo(cx,srY-24*u);c.stroke();c.setLineDash([]);
+    for(let i=0;i<10;i++){const ph=(t*.34+i/10)%1,x=cx+(i-4.5)*42*u,y=srY-ph*H*.24;c.fillStyle=i%2?e.sc.accent:e.sc.accent2;c.beginPath();c.arc(x,y,12*u,0,TAU);c.fill();c.fillStyle=e.sc.bg;c.font=`700 ${11*u}px sans-serif`;c.fillText('Ca²⁺',x,y+4*u);}
+    c.restore();
+  }
+};
+
+defs.medTroponin={
+  name:'Medical · Troponin tropomyosin', tags:['graphic','editorial'], w:11, layer:'front',
+  draw(e,bb,P){
+    if(!main(e)||e.lt<0)return; const c=e.ctx,u=U(e),a=fade(e),W=e.W,H=e.H,k=J.clamp(e.lt/1.2),cy=H*.77;
+    c.save();c.globalAlpha=a;c.textAlign='center';
+    c.strokeStyle=e.sc.accent;c.lineWidth=10*u;c.beginPath();c.moveTo(W*.18,cy);c.lineTo(W*.82,cy);c.stroke();
+    c.strokeStyle=e.sc.accent2;c.lineWidth=6*u;c.beginPath();c.moveTo(W*.2,cy-22*u-28*u*k);c.bezierCurveTo(W*.38,cy-55*u,W*.62,cy-5*u,W*.8,cy-22*u-28*u*k);c.stroke();
+    for(let i=0;i<7;i++){const x=W*(.23+i*.09);c.fillStyle=e.sc.fg;c.beginPath();c.arc(x,cy,13*u,0,TAU);c.fill();}
+    c.fillStyle=e.sc.accent;c.beginPath();c.arc(W*.5,cy-58*u,25*u,0,TAU);c.fill();c.fillStyle=e.sc.bg;c.font=`700 ${14*u}px sans-serif`;c.fillText('Ca²⁺',W*.5,cy-53*u);
+    c.fillStyle=e.sc.fg;c.font=`700 ${22*u}px sans-serif`;c.fillText('Ca²⁺ LIGA-SE À TROPONINA C',W*.5,cy+68*u);
+    c.fillStyle=e.sc.sub;c.font=`700 ${18*u}px monospace`;c.fillText('TROPOMIOSINA DESLOCA → SÍTIOS DA ACTINA EXPOSTOS',W*.5,cy+105*u);
+    c.restore();
+  }
+};
+
 defs.medSarcomere={
   name:'Medical · Sarcomere', tags:['graphic','editorial'], w:10, layer:'front',
   draw(e,bb,P){
