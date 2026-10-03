@@ -1,18 +1,139 @@
 {
- "version":1,
- "timingOrder":2,
- "title":"QUEST: CONTRAÇÃO MUSCULAR",
- "artist":"Medicina Gamificada · JIZURA Medical",
- "lyrics":"[00:00.00]ENTRE NO CORPO HUMANO\n[00:02.00]MÚSCULO ESTRIADO ESQUELÉTICO\n[00:04.00]FASCÍCULO → FIBRA MUSCULAR\n[00:06.00]*POTENCIAL DE AÇÃO*\n[00:08.00]CANAIS DE Na⁺ SE ABREM\n[00:10.00]DESPOLARIZAÇÃO DO SARCOLEMA\n[00:12.00]SINAL → TÚBULOS T\n[00:14.00]*LIBERAÇÃO DE Ca²⁺*\n[00:16.00]Ca²⁺ → TROPONINA\n[00:18.00]TROPOMIOSINA SE DESLOCA\n[00:20.00]ACTINA + MIOSINA\n[00:22.00]*ENCURTAMENTO DO SARCÔMERO*\n[00:24.00]CONTRAÇÃO MUSCULAR\n[00:26.00]*QUEST CONCLUÍDA*\n[00:28.00]+500 XP · FISIOLOGIA NÍVEL 2",
- "style":"hud","mood":"graphic","extra":true,"wa":false,"horror":false,"typo":true,"kinetic":true,"lang":"auto","keyBg":"off","unify":true,"typeset":true,"centerDir":"tb","centerFree":false,"seed":2026100301,"aspect":"16:9","res":1080,"fps":30,
- "fx":{"motion":0.92,"glitch":0.14,"chroma":0.18,"decor":1,"density":0.88,"texture":0.25,"flash":true,"onTwos":false,"koma":0,"hud":"on","bgSwitch":0.62,"hideNo":true,"hideTime":true},
- "timing":{"bpm":120,"offset":0,"snap":false,"tail":0.8,"lineTimes":{},"lineScale":1},
- "overrides":{
-  "0":{"decor":["crosshair"]},"1":{"decor":["crosshair"]},"2":{"decor":["cropMarks"]},
-  "3":{"decor":["medActionPotential"]},"4":{"decor":["medIonChannel"]},"5":{"decor":["medActionPotential"]},
-  "6":{"decor":["medIonChannel"]},"7":{"decor":["medCalcium"]},"8":{"decor":["medCalcium"]},
-  "9":{"decor":["medCalcium"]},"10":{"decor":["medSarcomere"]},"11":{"decor":["medSarcomere"]},
-  "12":{"decor":["medSarcomere"]},"13":{"decor":["medQuest"]},"14":{"decor":["medQuest"]}
- },
- "locks":{"tech":{},"params":{}},"colors":{"enabled":true,"accentOn":true,"bg":"#06121D","fg":"#EAF7FF","sub":"#6D91A8","accent":"#00E5FF","accent2":"#FF496C","ink":"#0B2434"},"fonts":{}
+  "version": 1,
+  "timingOrder": 2,
+  "title": "QUEST: CONTRAÇÃO MUSCULAR",
+  "artist": "Medicina Gamificada · JIZURA Medical",
+  "lyrics": "[00:00.00]ENTRE NO CORPO HUMANO\n[00:02.00]MÚSCULO ESTRIADO ESQUELÉTICO\n[00:04.00]FASCÍCULO → FIBRA MUSCULAR\n[00:06.00]*POTENCIAL DE AÇÃO*\n[00:08.00]CANAIS DE Na⁺ SE ABREM\n[00:10.00]DESPOLARIZAÇÃO DO SARCOLEMA\n[00:12.00]SINAL → TÚBULOS T\n[00:14.00]*LIBERAÇÃO DE Ca²⁺*\n[00:16.00]Ca²⁺ → TROPONINA C\n[00:18.00]TROPOMIOSINA SE DESLOCA\n[00:20.00]ACTINA + MIOSINA\n[00:22.00]*ENCURTAMENTO DO SARCÔMERO*\n[00:24.00]CONTRAÇÃO MUSCULAR\n[00:26.00]*QUEST CONCLUÍDA*\n[00:28.00]+500 XP · FISIOLOGIA NÍVEL 2",
+  "style": "hud",
+  "mood": "graphic",
+  "extra": true,
+  "wa": false,
+  "horror": false,
+  "typo": true,
+  "kinetic": true,
+  "lang": "auto",
+  "keyBg": "off",
+  "unify": true,
+  "typeset": true,
+  "centerDir": "tb",
+  "centerFree": false,
+  "seed": 2026100301,
+  "aspect": "16:9",
+  "res": 1080,
+  "fps": 30,
+  "fx": {
+    "motion": 0.92,
+    "glitch": 0.14,
+    "chroma": 0.18,
+    "decor": 1,
+    "density": 0.88,
+    "texture": 0.25,
+    "flash": true,
+    "onTwos": false,
+    "koma": 0,
+    "hud": "on",
+    "bgSwitch": 0.62,
+    "hideNo": true,
+    "hideTime": true
+  },
+  "timing": {
+    "bpm": 120,
+    "offset": 0,
+    "snap": false,
+    "tail": 0.8,
+    "lineTimes": {},
+    "lineScale": 1
+  },
+  "overrides": {
+    "0": {
+      "decor": [
+        "crosshair"
+      ]
+    },
+    "1": {
+      "decor": [
+        "crosshair"
+      ]
+    },
+    "2": {
+      "decor": [
+        "cropMarks"
+      ]
+    },
+    "3": {
+      "decor": [
+        "medActionPotential"
+      ]
+    },
+    "4": {
+      "decor": [
+        "medIonChannel"
+      ]
+    },
+    "5": {
+      "decor": [
+        "medActionPotential"
+      ]
+    },
+    "6": {
+      "decor": [
+        "medIonChannel"
+      ]
+    },
+    "7": {
+      "decor": [
+        "medCalcium"
+      ]
+    },
+    "8": {
+      "decor": [
+        "medCalcium"
+      ]
+    },
+    "9": {
+      "decor": [
+        "medCalcium"
+      ]
+    },
+    "10": {
+      "decor": [
+        "medSarcomere"
+      ]
+    },
+    "11": {
+      "decor": [
+        "medSarcomere"
+      ]
+    },
+    "12": {
+      "decor": [
+        "medSarcomere"
+      ]
+    },
+    "13": {
+      "decor": [
+        "medQuest"
+      ]
+    },
+    "14": {
+      "decor": [
+        "medQuest"
+      ]
+    }
+  },
+  "locks": {
+    "tech": {},
+    "params": {}
+  },
+  "colors": {
+    "enabled": true,
+    "accentOn": true,
+    "bg": "#06121D",
+    "fg": "#EAF7FF",
+    "sub": "#6D91A8",
+    "accent": "#00E5FF",
+    "accent2": "#FF496C",
+    "ink": "#0B2434"
+  },
+  "fonts": {}
 }
