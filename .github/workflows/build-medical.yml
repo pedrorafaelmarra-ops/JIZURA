@@ -1,4 +1,4 @@
-name: Build JIZURA Medical
+name: Build JIZURA Medical\n# trigger retry 2026-10-03
 
 on:
   push:
