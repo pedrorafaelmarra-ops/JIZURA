@@ -43,6 +43,7 @@ jobs:
             fs.mkdirSync('preview-medical', { recursive: true });
             const browser = await chromium.launch({ headless: true });
             const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+            await page.addInitScript(() => localStorage.setItem('jizura.tourDone', '1'));
             const errors = [];
             page.on('console', m => {
               const s = '[console.' + m.type() + '] ' + m.text();
