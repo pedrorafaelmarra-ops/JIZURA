@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "timingOrder": 2,
+  "themeId": null,
+  "title": "MEDICINA: POR DENTRO DO CORPO",
+  "artist": "Projeto de aprendizagem gamificada",
+  "lyrics": "Tudo começa com uma pergunta.\nComo o corpo humano realmente funciona?\nDo organismo ao órgão.\nDo órgão ao tecido.\nDo tecido à célula.\nDa célula aos sinais que mantêm a vida.\n*Fisiologia* deixa de ser apenas teoria.\nA doença altera o sistema.\nO medicamento interfere no mecanismo.\nE cada caso clínico se transforma em uma missão.\nExplore. Raciocine. Decida.\nAprenda medicina por dentro do corpo!",
+  "style": "noir",
+  "mood": null,
+  "extra": true,
+  "wa": false,
+  "horror": false,
+  "typo": true,
+  "kinetic": true,
+  "lang": "auto",
+  "keyBg": "off",
+  "unify": true,
+  "typeset": false,
+  "centerDir": "tb",
+  "centerFree": false,
+  "seed": 20261002,
+  "aspect": "16:9",
+  "res": 1080,
+  "fps": 30,
+  "fx": {
+    "motion": 0.82,
+    "glitch": 0.18,
+    "chroma": 0.25,
+    "decor": 0.62,
+    "density": 0.66,
+    "texture": 0.35,
+    "flash": true,
+    "onTwos": false,
+    "koma": 0,
+    "hud": "off",
+    "bgSwitch": 0.45,
+    "hideNo": true,
+    "hideTime": true
+  },
+  "timing": {
+    "bpm": 92,
+    "offset": 0.25,
+    "snap": true,
+    "tail": 1.2,
+    "lineTimes": {},
+    "lineScale": 1
+  },
+  "overrides": {},
+  "locks": {
+    "tech": {},
+    "params": {}
+  },
+  "colors": {
+    "enabled": false
+  },
+  "fonts": {}
+}
